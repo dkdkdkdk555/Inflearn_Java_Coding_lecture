@@ -2,7 +2,7 @@ package 효율성.연속_부분수열;
 
 import java.util.Scanner;
 
-public class Main {
+public class Main { // 오답
     public static void main(String[] args) {
         //입력
         Scanner scn = new Scanner(System.in);
