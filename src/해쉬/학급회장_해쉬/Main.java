@@ -1,4 +1,4 @@
-package 컬렉션.학급회장_해쉬;
+package 해쉬.학급회장_해쉬;
 
 import java.util.*;
 public class Main {  // 정답
