@@ -121,7 +121,7 @@ public class String1 {
     }
 
     // 10. 가장 짧은 문자거리
-    public static void main(String[] args) {
+    public static void main6(String[] args) {
         Scanner scn = new Scanner(System.in);
         String str = scn.nextLine();
         String[] arr = str.split(" ");
@@ -142,5 +142,51 @@ public class String1 {
         }
 
         System.out.println(result);
+    }
+
+    // 11. 문자열 압축
+    public static void main7(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        String str = scn.next();
+        char[] chars = str.toCharArray();
+        int count = 1;
+        String result = "";
+        char s = '0';
+
+        for (int i = 0; i < chars.length; i++) {
+            if (s == chars[i]){
+                count++;
+                if(i+1 == chars.length) result += (String.valueOf(s) + count);
+            } else {
+                if(s != '0' && count > 1) {
+                    result += (String.valueOf(s) + count);
+                } else if(s != '0' && count == 1){
+                    result += String.valueOf(s);
+                }
+                s = chars[i];
+                count = 1;
+
+                if(i+1 == chars.length) result += String.valueOf(s);
+            }
+        }
+
+        System.out.println(result);
+    }
+
+    // 12.암호
+    public static void main(String[] args) {
+        Scanner scn= new Scanner(System.in);
+        int n = scn.nextInt();
+        String str = scn.next();
+
+        String answer = "";
+        for (int i = 0; i < n; i++) {
+            String tmp = str.substring(0, 7).replace("#", "1").replace("*", "0");
+            int num = Integer.parseInt(tmp, 2);
+            answer += (char) num;
+            str = str.substring(7);
+        }
+
+        System.out.println(answer);
     }
 }
