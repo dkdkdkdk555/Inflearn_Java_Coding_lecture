@@ -25,11 +25,12 @@ public class Main {
         for(int i=0;i<str.length;i++){
             for(int j=0;j<str.length;j++){
                 if(str[j] == c){ // e와 같다면
-                    if(Math.abs(i - j)<=d) {
+                    if(Math.abs(i - j)<=d) { // 최단거리로 구하기 위한 로직
                         d = Math.abs(i - j);
                     }
                 }
             }
+            // 더 가까운 애가 있을 수 있으므로 바깥 반복문에서 추가해줘야 함
             distance += d + " ";
             d = 100;
         }

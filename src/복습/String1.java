@@ -83,7 +83,7 @@ public class String1 {
     }
 
     // 8. 팰린드롬
-    public static void main(String[] args) {
+    public static void main4(String[] args) {
         Scanner scn = new Scanner(System.in);
         String str = scn.nextLine().toUpperCase();
         char[] arr = str.toCharArray();
@@ -102,5 +102,45 @@ public class String1 {
             System.out.println("NO");
         }
 
+    }
+
+    // 9. 숫자만 추출
+    public static void main5(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        String str = scn.next();
+        String tobeint = "";
+        for (char c :str.toCharArray()) {
+            if(!Character.isAlphabetic(c)){
+                tobeint += c;
+            }
+        }
+
+        int result = Integer.parseInt(tobeint);
+
+        System.out.println(result);
+    }
+
+    // 10. 가장 짧은 문자거리
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        String str = scn.nextLine();
+        String[] arr = str.split(" ");
+        char[] chars = arr[0].toCharArray();
+        char c = arr[1].charAt(0);
+
+        String result = "";
+        int d = 100;
+        for (int i = 0; i < chars.length; i++) {
+            for (int j = 0; j < chars.length; j++) {
+                if(c == chars[j]){
+                   if(Math.abs(i-j) <= d) d = Math.abs(i-j);
+                }
+            }
+
+            result += d + " ";
+            d = 100;
+        }
+
+        System.out.println(result);
     }
 }
