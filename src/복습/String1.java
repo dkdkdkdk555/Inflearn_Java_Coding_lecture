@@ -52,7 +52,7 @@ public class String1 {
     }
 
     // 6. 중복문자제거
-    public static void main(String[] args) {
+    public static void main2(String[] args) {
         Scanner scn = new Scanner(System.in);
         String str = scn.next();
 
@@ -65,5 +65,42 @@ public class String1 {
         }
 
         System.out.println(result);
+    }
+
+    // 7. 회문 문자열
+    public static void main3(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        String next = scn.next();
+        String text = next.toUpperCase();
+        StringBuffer sb = new StringBuffer(text);
+        String str = sb.reverse().toString();
+
+        if(text.equals(str)){
+            System.out.print("YES");
+        } else {
+            System.out.println("NO");
+        }
+    }
+
+    // 8. 팰린드롬
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        String str = scn.nextLine().toUpperCase();
+        char[] arr = str.toCharArray();
+        String str2 = "";
+        for (char c : arr) {
+            if(Character.isAlphabetic(c)) str2 += c;
+        }
+
+        StringBuffer sb = new StringBuffer(str2);
+        String streverse = sb.reverse().toString();
+
+
+        if(str2.equals(streverse)){
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
     }
 }
