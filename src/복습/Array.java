@@ -101,7 +101,7 @@ public class Array {
     }
 
     // 4. 피보나치 수열
-    public static void main(String[] args) {
+    public static void main4(String[] args) {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
 
@@ -115,5 +115,52 @@ public class Array {
         for (int i : list) {
             System.out.print(i + " ");
         }
+    }
+
+    // 5. 소수
+    public static void main5(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int[] arr = new int[n+1];
+        int answer = 0;
+        for (int i = 2; i <=n; i++) {
+            if (arr[i] == 0) {
+                answer++;
+                for (int j = i; j <= n; j = j+i) {
+                    arr[j] =1;
+
+                }
+            }
+        }
+
+        System.out.println(answer);
+    }
+
+    // 6. 뒤집은 소수
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        String[] arr = new String[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scn.next();
+        }
+
+        String answer = "";
+
+        for (String num : arr) {
+            StringBuffer sb = new StringBuffer(num);
+            int rnum = Integer.valueOf(sb.reverse().toString());
+            for (int i = 2; i <= rnum; i++) {
+                if(i==rnum){
+                    answer += rnum + " ";
+                }
+                if(rnum%i == 0){
+                    break;
+                }
+
+            }
+        }
+
+        System.out.println(answer);
     }
 }
