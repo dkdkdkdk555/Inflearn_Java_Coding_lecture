@@ -137,7 +137,7 @@ public class Array {
     }
 
     // 6. 뒤집은 소수
-    public static void main(String[] args) {
+    public static void main6(String[] args) {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
         String[] arr = new String[n];
@@ -158,6 +158,130 @@ public class Array {
                     break;
                 }
 
+            }
+        }
+
+        System.out.println(answer);
+    }
+
+    // 7. 점수계산
+    public static void main7(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scn.nextInt();
+        }
+
+        int total = 0;
+        int cnt = 0;
+        for (int i = 0; i < n; i++) {
+            if(arr[i]==1){
+                cnt++;
+                total += cnt;
+            } else {
+                cnt = 0;
+            }
+
+        }
+
+        System.out.println(total);
+    }
+
+
+    // 8. 등수구하기
+    public static void main8(String[] args) {
+        /*
+            한번에 등수를 매기는게 아닌 개별 점수별로
+            등수를 파악
+         */
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scn.nextInt();
+        }
+
+        int[] answer = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            int cnt = 1;
+            for (int j = 0; j < n; j++) {
+                if(arr[j] > arr[i]) cnt++; // 비교군이 자기보다 큰게 있을때마다 등수 밀림
+            }
+
+            answer[i] = cnt;
+        }
+
+        for (int i : answer) {
+            System.out.print(i + " ");
+        }
+    }
+
+    // 9.격자판 최대합
+    public static void main9(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int[][] arr = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                arr[i][j] = scn.nextInt();
+            }
+        }
+
+        int max = 0;
+        int LtoR = 0;
+        int RtoL = 0;
+        for (int i = 0; i < n; i++) {
+            int sumH = 0;
+            int sumY = 0;
+            for (int j = 0; j < n; j++) {
+               sumH += arr[i][j];
+               sumY += arr[j][i];
+               if(i==j) LtoR += arr[i][j];
+               if(i+j == (n-1)) RtoL += arr[i][j];
+            }
+
+            if(sumH > max) max = sumH;
+            if(sumY > max) max = sumY;
+
+        }
+
+        if(LtoR > max) max = LtoR;
+        if(RtoL > max) max = RtoL;
+
+        System.out.println(max);
+
+    }
+
+    // 10.봉우리
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int[][] arr = new int[n+2][n+2];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                arr[i][j] = scn.nextInt();
+            }
+        }
+        int[] dx = {0, 0, -1, 1};
+        int[] dy = {1, -1, 0, 0};
+
+        int answer = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                boolean flag = true;
+                for (int k = 0; k < 4; k++) {
+                    int nx = i+dx[k];
+                    int ny = j+dy[k];
+                    if(nx >= 0 && nx < n && ny >= 0 && ny < n){ // 가장자리가 아니여야 함
+                        if(arr[nx][ny] >= arr[i][j]) {
+                            flag = false;
+                            break;
+                        }
+                    }
+                }
+                if(flag) answer++;
             }
         }
 
