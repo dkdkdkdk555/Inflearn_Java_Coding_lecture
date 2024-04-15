@@ -3,7 +3,6 @@ package 배열.임시반장;
 import java.util.*;
 public class TMain {
     public static void main(String[] args) {
-        TMain t = new TMain();
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
         int[][] arr = new int[n+1][6];
@@ -20,7 +19,9 @@ public class TMain {
                 for(int k=1;k<=5;k++){
                     if(arr[i][k]==arr[j][k]){
                         cnt++;
-                        break; // break해줘야 j가 넘어가면서 다른 열의 k 와 비교해준다.
+                        break; // break해줘야 j가 넘어가면서 다른 열의 k 와 비교해준다 ->
+                        // 열끼리 비교하기 때문에 비교학생(열)과 같은 반이었던 적이 있는지만 확인하는것 그러므로 더 볼 필요 없이
+                        // 바로 다음 열 보면 되니까
                     }
                 }
             }

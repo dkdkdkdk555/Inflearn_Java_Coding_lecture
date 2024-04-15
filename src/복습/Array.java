@@ -1,5 +1,7 @@
 package 복습;
 
+import 배열.멘토링.TMain;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -255,7 +257,7 @@ public class Array {
     }
 
     // 10.봉우리
-    public static void main(String[] args) {
+    public static void main10(String[] args) {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
         int[][] arr = new int[n+2][n+2];
@@ -287,4 +289,89 @@ public class Array {
 
         System.out.println(answer);
     }
+
+    // 11. 임시반장 정하기
+    public static void main11(String[] args) {
+        /**
+         *  오답,
+         *  학생과 학생(열과 열)으로 비교하지 않고
+         *  한 학생에 대해 for문을 돌때 한 학년에서 전체 학생들과 같은 반이 된적이 있는지를 검사했다.
+         *  이렇게 되면 삼중포문을 다돌기때문에 run time exceed 가 날 수 있고
+         *  같은 반이었던 학생의 수를 세는것인데 중복으로 세질 수 있어서 잘못된 발상이었다.
+         *
+         *  오로지 다른 학생과 해당 학생(열)이 같은 반이 된적이 있는지만 따지려면
+         *  학생과 학생 (열과 열)로 하나씩 비교하는 발상이 옳다.
+         */
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int[][] arr = new int[n][5];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                arr[i][j] = scn.nextInt();
+            }
+        }
+
+
+        int answer = 0, max=Integer.MIN_VALUE;
+        for (int i = 0; i < n; i++) {
+            int cnt = 0;
+            for (int j = 0; j < n; j++) {
+                for (int k = 0; k < 5; k++) {
+                    if(i!=k){
+                        if(arr[i][j] == arr[k][j]) {
+                            cnt++;
+                        }
+                    }
+                }
+            }
+            if(cnt>max) {
+                max = cnt;
+                answer = i;
+            }
+        }
+
+        System.out.println(answer+1);
+    }
+
+
+    // 12. 멘토링
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n= scn.nextInt(); // 인원수
+        int m= scn.nextInt(); // 시험횟수
+        int[][] arr = new int[m][n];
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                arr[i][j] = scn.nextInt();
+            }
+        }
+
+        int cnt = 0;
+
+        for (int i = 0; i < n; i++) {
+            int s = arr[0][i];
+            for (int j = 0; j < m; j++) {
+                for (int k = 0; k < n; k++) {
+                    if(j==0){
+                        if(s == arr[j][k]) {
+                            cnt = n - (k+1);
+                        }
+                    } else {
+                        if(s==arr[j][k]){
+                            break;
+                        } else {
+                            cnt--;
+                        }
+                    }
+
+
+
+                }
+            }
+        }
+
+        System.out.println(cnt);
+
+    }
+
 }
