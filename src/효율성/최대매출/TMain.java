@@ -29,4 +29,5 @@ public class TMain {
         }
         System.out.println(T.solution(n, k, arr));
     }
+
 }

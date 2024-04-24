@@ -37,7 +37,7 @@ public class Efficiency {
     }
 
     // 2. 공통원소 구하기
-    public static void main(String[] args) {
+    public static void main2(String[] args) {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
         int[] nrr = new int[n];
@@ -72,6 +72,41 @@ public class Efficiency {
         }
 
 
+    }
+
+    // 3. 최대 매출
+    // Sliding Window 문제..
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int k = scn.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scn.nextInt();
+        }
+
+        int lt = 0;
+        int rt = k-1;
+
+        int sum = 0;
+        int max = 0;
+
+        while (rt < (n-1)){
+            sum += arr[lt];
+            if(lt==rt){
+                if(sum>max){
+                    max = sum;
+                }
+
+                sum = 0;
+                rt++;
+                lt = rt - (k-1);
+            } else {
+                lt++;
+            }
+        }
+
+        System.out.println(max);
     }
 
 }
