@@ -76,7 +76,7 @@ public class Efficiency {
 
     // 3. 최대 매출
     // Sliding Window 문제..
-    public static void main(String[] args) {
+    public static void main3(String[] args) {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
         int k = scn.nextInt();
@@ -107,6 +107,38 @@ public class Efficiency {
         }
 
         System.out.println(max);
+    }
+
+
+    // 4. 연속 부분 수열 -> 오답.. 접근방식은 맞았음..로직이 틀림
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int m = scn.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scn.nextInt();
+        }
+
+        int cnt = 0;
+        int sum = 0;
+        int lt=0, rt=0;
+
+        while (rt <= n){
+            if(sum < m) {
+                sum = sum + arr[rt];
+                rt++;
+            } else if (sum > m) {
+                sum = sum - arr[lt];
+                lt++;
+            } else if (sum == m) {
+                cnt++;
+                sum = sum - arr[lt];
+                lt++;
+            }
+        }
+
+        System.out.println(cnt);
     }
 
 }
