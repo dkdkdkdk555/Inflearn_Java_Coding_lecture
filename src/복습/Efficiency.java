@@ -111,7 +111,7 @@ public class Efficiency {
 
 
     // 4. 연속 부분 수열 -> 오답.. 접근방식은 맞았음..로직이 틀림
-    public static void main(String[] args) {
+    public static void main4(String[] args) {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
         int m = scn.nextInt();
@@ -139,6 +139,32 @@ public class Efficiency {
         }
 
         System.out.println(cnt);
+    }
+
+    // 5. 연속된 자연수의 합
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = i+1;
+        }
+
+        int sum = 0;
+        int lt=0, rt=0;
+        int answer = 0;
+        while (rt<n-1){
+            if(sum<n){
+                sum += arr[rt++];
+            } else if(sum==n){
+                answer++;
+                sum -= arr[lt++];
+            } else if(sum>n){
+                sum-=arr[lt++];
+            }
+        }
+
+        System.out.println(answer);
     }
 
 }
