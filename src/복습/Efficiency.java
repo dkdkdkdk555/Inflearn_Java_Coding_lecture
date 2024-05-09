@@ -142,7 +142,7 @@ public class Efficiency {
     }
 
     // 5. 연속된 자연수의 합
-    public static void main(String[] args) {
+    public static void main5(String[] args) {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
         int[] arr = new int[n];
@@ -165,6 +165,53 @@ public class Efficiency {
         }
 
         System.out.println(answer);
+    }
+
+    // 6. 최대 길이 연속부분수열->오답,,
+    // <= rt가 0을 만났을때 0이 k 이상일때만 길이를 구함..
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int k = scn.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scn.nextInt();
+        }
+
+        int lt=0, rt=0, max=0, kr=0, kl=0;
+        while(rt<n){ // 13 = i
+           rt++;
+           if(rt>=n) break;
+           if(arr[rt]==0){
+               if(kr==k){ // kr == 2
+                   rt--;
+                   max = (rt-lt)+1;
+                   kr=0;
+                   while(kl<=k){
+                       lt++;
+                       if(arr[lt]==0){
+                           if(kl==k){
+                               kl=0;
+                               break;
+                           }else {
+                               kl++;
+                           }
+                       } else {
+                           if (kl==k){
+                               kl=0;
+                               break;
+                           }
+                       }
+                   }
+               } else {
+                   kr++; //2
+               }
+           }
+        }
+
+        System.out.println(max);
+
+
     }
 
 }

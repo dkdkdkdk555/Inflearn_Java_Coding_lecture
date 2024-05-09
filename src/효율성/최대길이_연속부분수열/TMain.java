@@ -11,7 +11,7 @@ public class TMain {
                 if(arr[lt]==0) cnt--;
                 lt++;
             }
-            answer = Math.max(answer, rt-lt+1);
+            answer = Math.max(answer, rt-lt+1); // rt가 증가할때마다 길이를 구함
         }
         return answer;
     }
