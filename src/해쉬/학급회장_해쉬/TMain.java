@@ -8,7 +8,7 @@ public class TMain {
         char answer = ' ';
         HashMap<Character, Integer> map = new HashMap<>();
         for(char x : s.toCharArray()){
-            map.put(x, map.getOrDefault(x, 0)+1); // x를 가져오데 없으면 0 을 넣어라
+            map.put(x, map.getOrDefault(x, 0)+1); // x를 가져오되 없으면 0 을 넣어라
             // 갱신됨..
         }
         int max = 0;
