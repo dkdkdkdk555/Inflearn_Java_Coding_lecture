@@ -10,6 +10,8 @@ public class TMain {
             map.put(x, map.getOrDefault(x, 0)+1);
         }
         for(char x : s2.toCharArray()){
+            // 두번째 문자열이 첫번째 문자열의 문자를 가지고 있지 않거나
+            // 가지고 있더라도 갯수가 다른 경우
             if(!map.containsKey(x) || map.get(x)==0) return "NO";
             map.put(x, map.get(x)-1);
         }
