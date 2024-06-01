@@ -64,7 +64,7 @@ public class Hash {
     }
 
     // 3. 매출액의 종류
-    public static void main(String[] args) {
+    public static void main3(String[] args) {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
         int k = scn.nextInt();
@@ -97,5 +97,67 @@ public class Hash {
         for (Integer integer : list) {
             System.out.print(integer + " ");
         }
+    }
+
+
+    // 4. 모든 아나그램 찾기
+    public static void main4(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        String s = scn.next();
+        String t = scn.next();
+
+        int rt = t.toCharArray().length;
+        int count = 0;
+        char[] tchars = t.toCharArray();
+
+        Arrays.sort(tchars);
+
+        for (int lt = 0; lt < s.toCharArray().length-(t.toCharArray().length -1); lt++) {
+            char[] schars = s.substring(lt, rt).toCharArray();
+            Arrays.sort(schars);
+            rt++;
+            if(String.valueOf(tchars).equals(String.valueOf(schars))){
+                count++;
+            }
+        }
+
+        System.out.println(count);
+    }
+
+    // 5. K번째 큰 수
+    // sliding window 방식 말고 for문 세개 돌리는것도 괜춘,,
+    // 수 더 하는건 잘했는데 정렬 및 답 구하는 로직을 못짬,, 무튼 오답
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = 0;
+        int k = 0;
+        for (int i = 0; i < 2; i++) {
+            if(i==0) n = scn.nextInt();
+            else k = scn.nextInt();
+        }
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scn.nextInt();
+        }
+
+        int lt=0, rt=0, sum = 0;
+        List<Integer> set = new ArrayList<>();
+
+        while(rt<n){
+            if((rt-lt)<3){
+                sum += arr[rt];
+            } else {
+                sum -= arr[lt++];
+                sum += arr[rt];
+            }
+            if((rt-lt)==2) set.add(sum);
+            rt++;
+        }
+
+        Collections.sort(set, Collections.reverseOrder());
+        Set<Integer> realSet = new HashSet<Integer>(set);
+        List<Integer> list = new ArrayList<>(realSet);
+
+        System.out.println(list.get(2));
     }
 }
